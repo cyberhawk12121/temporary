@@ -1,0 +1,16 @@
+{% extends 'streaming/base_admin.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <h2 class="mb-3" align="center">Create a new Assignment</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-8 col-12 form-container" align ="center">
+            <form class="card" style="padding: 20px; width: 80%; margin: 0 auto;" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button style="margin: 10px;" type="submit" class="btn btn-success">Submit</button>
+                <a style="margin: 10px;" href="{% url 'home' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
+            </form>
+            </div>
+        </div>
+        
+{% endblock %}

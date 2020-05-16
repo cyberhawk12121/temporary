@@ -1,0 +1,49 @@
+{% extends 'streaming/base_student.html' %}
+{% block content %}
+{% for a in assignments %}
+  {% if a.id == ids %}
+<h3>Title: {{a.name}}</h3>
+{% endif %}
+{% endfor %}
+ 
+
+{% if questions %}
+<form  method="POST" action="{% url 'student:exam_process1' id=ids  %}" novalidate enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% for i in questions%}
+  <div class="card" style="padding:20px">
+  <div id="div_id_question" class="form-group"> 
+      <label for="id_question" class="col-form-label  requiredField">Question<span class="asteriskField">*</span> </label> 
+   
+    <div class="">{{i.question}}</div> 
+  </div> 
+  
+  <div id="div_id_option1" class="form-group">
+      <div class="">
+        <input type="radio" name="choice{{ i.question_no}}" value="{{ i.option1 }}"> {{i.option1}}
+        </div> 
+  </div> 
+  
+  <div id="div_id_option2" class="form-group"> 
+      <div class=""><input type="radio" name="choice{{ i.question_no}}" value="{{ i.option2 }}" >  {{i.option2}}</div> 
+  </div> 
+  
+  <div id="div_id_option2" class="form-group"> 
+      <div class=""><input type="radio" name="choice{{ i.question_no}}" value="{{ i.option3 }}" > {{i.option3}}</div> 
+  </div> 
+  
+  <div id="div_id_option2" class="form-group">
+      <div class=""> <input type="radio" name="choice{{ i.question_no}}" value="{{ i.option4 }}" > {{i.option4}}</div> 
+  </div>   
+  </div>
+{% endfor %}
+<button type="submit" style="margin: 20px;" class="btn btn-success" >Submit</button>
+</form>
+
+{% else %}
+
+<h3 class="jumbotron">No questions yet!!</h3>
+
+{% endif %}
+{% endblock %}

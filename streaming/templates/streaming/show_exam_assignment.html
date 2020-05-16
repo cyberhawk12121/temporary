@@ -1,0 +1,59 @@
+{% extends 'streaming/base_admin.html' %}
+{% load crispy_forms_tags %}
+{% block content %} 
+
+
+
+{% for a in assignments %}
+  {% if a.id == ids %}
+<h3>Title: {{a.name}}</h3>
+{% endif %}
+{% endfor %}
+ 
+
+{% if questions %}
+
+<form  novalidate enctype="multipart/form-data">
+  {% for i in questions %}
+  <div class="card" style="padding: 20px;">
+  <div id="div_id_question" class="form-group"> <label for="id_question" class="col-form-label  requiredField">
+    Question<span class="asteriskField">*</span> </label> 
+    <div class="">{{i.question}}</div> 
+  </div> 
+  
+  <div id="div_id_option1" class="form-group"> <label for="id_option1" class="col-form-label ">
+      1. <span class="asteriskField">{{i.option1}}</span> </label> 
+       
+  </div> 
+  
+  <div id="div_id_option2" class="form-group"> <label for="id_option2" class="col-form-label">
+      2. <span class="asteriskField">{{i.option2}}</span> </label> 
+      
+  </div> 
+  
+  <div id="div_id_option2" class="form-group"> <label for="id_option2" class="col-form-label">
+      3. <span class="asteriskField">{{i.option3}}</span> </label>  
+  </div> 
+  
+  <div id="div_id_option2" class="form-group"> <label for="id_option2" class="col-form-label">
+      4. <span class="asteriskField">{{i.option4}}</span> </label>  
+  </div>  
+  
+  <div id="div_id_option2" class="form-group"> <label for="id_option2" class="col-form-label">
+      Answer<span class="asteriskField">*</span> </label> 
+      <div class="">{{i.answer}} </div> 
+  </div> 
+  
+  <div id="div_id_exam" class="form-group"> <label for="id_exam" class="col-form-label">
+    <div><td class="align-middle"><a href="/teachers/question/{{i.id}}">
+      <button type="button"  class="btn btn-sm btn-outline-danger">Delete</button>
+    </div>  
+  </div> 
+  
+  </form>
+</div>
+  {% endfor %}
+  
+<a href="/admin/assignment/View/" style="margin: 10px;" class="btn btn-info" role="button">Cancel</a></div>
+{% endif %}
+{% endblock %}

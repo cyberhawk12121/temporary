@@ -1,0 +1,20 @@
+{% extends 'streaming/base_admin.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<style>
+    
+form input{
+    width: 90%;
+    margin: 10px;
+}
+
+</style>
+    <h2 style="text-align: center;">CREATE SUBJECT</h2>
+    <form action="" class="card" style="padding: 20px; width: 40%; margin: 0 auto;" method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" style="margin: 10px;" class="btn btn-sm btn-success" value="Save">
+    </form>
+         
+{% endblock %}

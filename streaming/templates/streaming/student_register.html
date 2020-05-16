@@ -1,0 +1,14 @@
+{% extends 'streaming/index.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+    <form class="card" style="width: 30%; margin: 30px auto; padding: 20px;" method="POST">
+        <h2 style="text-align: center;">Student Register</h2>
+        <hr>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success" style="margin-top: 20px;" type="submit" value="Register">
+    </form>
+
+{% endblock %}

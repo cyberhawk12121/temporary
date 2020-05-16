@@ -1,0 +1,30 @@
+{% extends 'streaming/base_student.html' %}
+
+{% block content %}
+
+<h3 class="mb-3">Assignments</h3>
+  <div class="card">
+    <div class="table-responsive">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Subject</th>
+          <th>View Assignment</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in assignments %}
+          <tr>
+           <td class="align-middle">{{ a.name }}</a></td>
+           <td class="align-middle">{{ a.subject }}</a></td>
+           <td class="align-middle"><a href="/students/assignment/exam/View/{{a.id}}/"><button type="button"  class="btn btn-sm btn-success">Start</button></a></td>
+           <td class="align-middle"><a href="{% url 'student:result' id=a.id %}"><button type="button"  class="btn btn-sm btn-info">Marks</button></a></td>
+          </tr> 
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{% endblock %}

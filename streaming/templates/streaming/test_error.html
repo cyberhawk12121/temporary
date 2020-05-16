@@ -1,0 +1,16 @@
+{% extends 'streaming/base_student.html' %}
+
+{% block content %}
+    <style>
+        .link{
+            color: #f8515f;
+        }
+        .link:hover{
+            color: #f33b4a
+        }
+    </style>
+    <h3 class="jumbotron" style="text-align: center;">{{message}}</h3>
+    <a class="link" href="{% url 'student:show_assignment2' %}">Go back</a><br>
+    <a class="link" href="{% url 'student:result' id=id %}">Check result</a>
+
+{% endblock %}

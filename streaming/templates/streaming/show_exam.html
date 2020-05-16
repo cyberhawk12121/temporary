@@ -1,0 +1,32 @@
+{% extends 'streaming/base_admin.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<h1 class="mb-3">Assignments</h1>
+  <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Subject</th>
+          <th>View Assignment</th>
+          <th>Add Questions</th>
+          <th>Delete Assignment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in assignments %}
+          <tr>
+           <td class="align-middle">{{ a.name }}</a></td>
+           <td class="align-middle">{{ a.subject }}</a></td>
+           <td class="align-middle"><a href="/admin/assignment/exam/View/{{a.id}}/"><button type="button"  class="btn btn-sm btn-info">Show</button></a></td>
+           <td class="align-middle"><a href="/admin/add/questions/{{a.id}}/"><button type="button"  class="btn btn-sm btn-success">Add</button></a></td>
+           <td class="align-middle"><a href="/admin/exam/{{a.id}}"><button type="button"  class="btn btn-sm btn-danger">Delete</button></a></td>
+          </tr> 
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

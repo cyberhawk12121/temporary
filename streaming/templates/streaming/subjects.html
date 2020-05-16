@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, {{request.user}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Raleway';
+
+html, body
+{
+    font-family: Raleway;
+    margin: 0px;
+}
+
+div.container1
+{
+    font-family: Raleway;
+    margin: 0 auto;
+	padding: 1em 3em;
+	text-align: right;
+}
+
+div.container1 a
+{
+    color: #AAA;
+    text-decoration: none;
+    font: 20px Raleway;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+
+div.container2
+{
+    font-family: Raleway;
+    margin: 0 auto;
+	padding: 2em 3em;
+	text-align: left;
+}
+
+div.container2 a
+{
+    color: #FFF;
+    text-decoration: none;
+    font: 16px Raleway;
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.red
+{
+    background: #f44336;
+}
+.gray
+{
+    background: #f1efef;
+}
+d/* Top and Bottom borders go out */
+div.topBotomBordersOut a:before, div.topBotomBordersOut a:after
+{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background: #FFF;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+div.topBotomBordersOut a:before
+{
+    top: 0px;
+    transform: translateY(10px);
+}
+
+div.topBotomBordersOut a:after
+{
+    bottom: 0px;
+    transform: translateY(-10px);
+}
+
+div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
+{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.main_container{
+    background-color: #f1efef;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+</style>
+
+
+</head>
+<body>
+    <div  class="container1 gray topBotomBordersOut2">
+        <a style="color: rgb(68, 67, 67);" href="{% url 'home' %}"><p style="text-align: left; float: left; font: 20px Raleway;">LOGO</p></a> 
+        <a href="{% url 'logout' %}"> <button class="btn btn-sm btn-danger">LOGOUT</button> </a>
+        <a href="{% url 'logout' %}"><button class="btn btn-sm btn-danger">BUTTON</button> </a>
+    </div>
+    
+    <div class="container2 red topBotomBordersOut">
+        <a href="{% url 'admin:show_assignment1' %}">VIEW ASSIGNMENTS</a>
+        <a href="{% url 'admin:exam_add1' %}">CREATE ASSIGNMENT</a>
+        <a>UPLOAD LECTURE</a>
+        <a href="{% url 'admin:add_subject' %}">CREATE SUBJECT</a>
+        <a>VIEW SUBJECT</a>
+    </div>
+
+    <main class="main_container">
+        <h1 style="padding-bottom: 5px;font-size: 32px;" class="mb-3" align="center">Subjects list</h1>
+        <div class="jumbotron">
+          <div class="list-type5">
+          {% for subject in subjects %}
+          <ol style="list-style-type: none;">
+            <li><a href="#"><p style="font-weight: 500; font-size: 25px; color: black;padding: 10px;">{{ subject.name }}</p></a></li>
+          </ol>
+          {% endfor %}
+        
+        </div></div>
+    </main>
+ 
+</body>
+</html>

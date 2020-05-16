@@ -1,0 +1,18 @@
+{% extends 'streaming/base_admin.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="mb-3" align="center">Add questions</h2>
+<div class="row">
+  <div class="col-md-6 col-sm-8 col-12 form-container" align ="center">
+    <h3>Enter question number {{question}}</h3>
+   
+    <form style="width: 100%; margin: 0 auto; padding: 20px;" class="card"  method="post" novalidate enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" style="margin: 10px" class="btn btn-outline-success">Submit</button>
+      <a href="{% url 'admin:show_assignment1' %}" style="margin: 10px" class="btn btn-outline-danger" role="button">Cancel</a>
+    </form>
+   
+  </div>
+</div>
+{% endblock %}

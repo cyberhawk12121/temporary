@@ -1,0 +1,15 @@
+{% extends 'streaming/base_student.html' %}
+{% block content %}
+    {% if score %}
+    <h3 class="jumbotron">You scored
+        
+        {% for i in score %}
+            {{ i.score }}
+        {% endfor %}Marks
+    </h3>
+    
+    {% else %}    
+        <h3 class="jumbotron">Take the test first</h3>
+    {% endif %}
+
+{% endblock %}
