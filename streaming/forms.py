@@ -48,11 +48,12 @@ class LoginForm(forms.Form):
 class ExamAddForm(forms.ModelForm):
     class Meta:
         model = Exam
-        fields = ('subject','name','no_question')
+        fields = ('subject','name','no_question', 'deadline')
         widgets = {
             'no_question': forms.NumberInput(attrs={'min':1 ,'max':20, 'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'subject': forms.Select(attrs={'class': 'form-control'}),
+            'deadline': forms.DateTimeInput(attrs={'class': 'form-control'})
         }
 
 
@@ -82,6 +83,15 @@ class AddQuestionForm(forms.ModelForm):
                             option4=option4,answer=answer,exam=exam)
         question.question_no = Question.objects.values('question_no').count()+1
         question.save()
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model= Lesson
+        fields= ('title', 'video', 'subject')
+        widgets= {
+            'title': forms.TextInput(attrs= {'class':'form-control'}),
+            'subject': forms.Select(attrs= {'class':'form-control'})
+        }
 
 
         

@@ -1,0 +1,14 @@
+{% extends 'streaming/base_admin.html' %}
+{% block content %}
+
+<style>
+    form input{
+        margin: 10px;
+    }
+</style>
+<form class="card" style="width: 40%; margin: 30px auto; padding: 20px;" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" style="margin: 10px;" class="btn btn-sm btn-success">Save</button>
+</form>
+{% endblock %}

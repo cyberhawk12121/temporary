@@ -25,11 +25,14 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 
+
+# ONLINE TEST
 class Exam(models.Model):
     name = models.CharField(max_length=100,default="")
     user = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, null=True)
     no_question = models.IntegerField(default=1)
+    deadline = models.DateTimeField(default=datetime.now, blank=True) 
 
     def __str__(self):
         return self.name
@@ -53,4 +56,13 @@ class Question(models.Model):
 class Score(models.Model):
     score= models.IntegerField()
     exam= models.ForeignKey(Exam, on_delete= models.CASCADE)
+
+
+# UPLOAD LESSON
+class Lesson(models.Model):
+    user= models.ForeignKey(User, on_delete= models.CASCADE, null=True)
+    subject= models.ForeignKey(Subject, on_delete= models.CASCADE)
+    title= models.CharField(max_length=255)
+    video= models.FileField(upload_to= 'video/', null=True)
+    
 

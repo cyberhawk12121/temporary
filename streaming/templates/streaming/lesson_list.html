@@ -1,0 +1,28 @@
+{% extends 'streaming/base_admin.html' %}
+
+{% block content %}
+<style>
+    .link{
+        color: white;
+        text-decoration: none;
+    }
+
+</style>
+    <div class="row">
+        {% for list in lesson %}
+    
+        <div class="col-sm-3">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{list.subject}}</div>
+                <div class="card-body">
+                  <h5 class="card-title" style="color: rgb(233, 232, 232);">Some Description</h5>
+                  <p class="card-text"><a class="link" href="/admin/show/{{list.id}}">Go here: {{ list.title }}</a></p>
+                </div>
+              </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    
+{% endblock %}

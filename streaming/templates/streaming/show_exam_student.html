@@ -11,6 +11,7 @@
           <th>Title</th>
           <th>Subject</th>
           <th>View Assignment</th>
+          <th>Deadline</th>
           <th>Result</th>
         </tr>
       </thead>
@@ -20,6 +21,7 @@
            <td class="align-middle">{{ a.name }}</a></td>
            <td class="align-middle">{{ a.subject }}</a></td>
            <td class="align-middle"><a href="/students/assignment/exam/View/{{a.id}}/"><button type="button"  class="btn btn-sm btn-success">Start</button></a></td>
+           <td class="align-middle"><a><button type="button"  class="btn btn-sm btn-danger">{{ a.deadline }}</button></a></td>
            <td class="align-middle"><a href="{% url 'student:result' id=a.id %}"><button type="button"  class="btn btn-sm btn-info">Marks</button></a></td>
           </tr> 
         {% endfor %}

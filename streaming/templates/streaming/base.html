@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome, {{request.user}}</title>
+    <title>SAMPLE WEBSITE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <style>
     @import 'https://fonts.googleapis.com/css?family=Raleway';
@@ -109,19 +109,21 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
 <body>
     <div  class="container1 gray topBotomBordersOut2">
         <a style="color: rgb(68, 67, 67);" href="{% url 'home' %}"><p style="text-align: left; float: left; font: 20px Raleway;">LOGO</p></a> 
-        <a href="{% url 'logout' %}"> <button class="btn btn-sm btn-danger">LOGOUT</button> </a>
-        <a href="{% url 'logout' %}"><button class="btn btn-sm btn-danger">SELECT CLASS</button> </a>
+        <a href="{% url 'login' %}"> <button class="btn btn-sm btn-danger">LOGIN</button> </a>
+        <a><button class="btn btn-sm btn-danger">BUTTON</button> </a>
     </div>
     
     <div class="container2 red topBotomBordersOut">
-        <a href="{% url 'student:lesson_list1' %}">LESSONS</a>
-        <a href="{% url 'student:show_assignment2' %}">ASSIGNMENT</a>
-        <a>LIVE STREAM</a>
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'register_student' %}">SIGN UP STUDENT</a>
+        <a href="{% url 'register_admin' %}">SIGN UP ADMIN</a>
+        <a href="{% url 'login' %}">LOGIN</a>
     </div>
-    <main class="main_container">
-{% block content %}
-{% endblock %}
-</main>
 
+    <main class="main_container">
+        {% block content %}
+        {% endblock %}
+    </main>
+ 
 </body>
 </html>

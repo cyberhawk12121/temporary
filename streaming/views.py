@@ -8,6 +8,8 @@ from .decorators import *
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, request, HttpResponseRedirect, HttpResponseBadRequest 
 from django.utils.decorators import method_decorator
+import datetime
+
 
 from django.views.generic import (
     TemplateView, 
@@ -158,6 +160,7 @@ def add_question(request,id):
 
 
 def show_assignment(request):
+    print(datetime.time())
     assignments = Exam.objects.all()
     return render(request,'streaming/show_exam.html',{'assignments':assignments})
 
@@ -179,6 +182,31 @@ def delete_assignment(request,id):
     exam = Exam.objects.filter(id=id)
     exam.delete()
     return HttpResponseRedirect('/admin/assignment/View/')   
+    
+class UploadView(CreateView):
+    model= Lesson
+    form_class= UploadForm
+    template_name= 'streaming/upload.html'
+    def form_valid(self, form):
+        form.save()
+        return redirect('home')
+
+class LessonList(ListView):
+    model= Lesson
+    template_name= 'streaming/lesson_list.html'
+    def get_context_data(self, **kwargs):
+        lesson= Lesson.objects.all()
+        return {'lesson': lesson}
+
+
+def showvideo(request, id):
+    lastvideo= Lesson.objects.get(id=id)
+    videofile= lastvideo.video
+    context= {'videofile': videofile,}
+    print(videofile)
+    return render(request, 'streaming/show_video.html', context)
+
+
 
 
 
@@ -239,6 +267,27 @@ def exam_result(request, id):
     score= Score.objects.filter(exam=exam)
     return render(request, 'streaming/exam_result.html', {'score':score})
 
+class LessonList1(ListView):
+    model= Lesson
+    template_name= 'streaming/lesson_list_student.html'
+    def get_context_data(self, **kwargs):
+        lesson= Lesson.objects.all()
+        return {'lesson': lesson}
+
+
+def showvideo1(request, id):
+    lastvideo= Lesson.objects.get(id=id)
+    videofile= lastvideo.video
+    context= {'videofile': videofile,}
+    print(videofile)
+    return render(request, 'streaming/show_video_student.html', context)
+
+
+
+
+
+
+    
 
 
 

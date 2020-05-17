@@ -116,9 +116,10 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     <div class="container2 red topBotomBordersOut">
         <a href="{% url 'admin:show_assignment1' %}">VIEW ASSIGNMENTS</a>
         <a href="{% url 'admin:exam_add1' %}">CREATE ASSIGNMENT</a>
-        <a>UPLOAD LECTURE</a>
+        <a href="{% url 'admin:upload' %}">UPLOAD LECTURE</a>
         <a href="{% url 'admin:add_subject' %}">CREATE SUBJECT</a>
         <a href="{% url 'admin:view_subject' %}">VIEW SUBJECT</a>
+        <a href="{% url 'admin:lesson_list' %}">UPLOADED LESSONS</a>
     </div>
 
     <main class="main_container">

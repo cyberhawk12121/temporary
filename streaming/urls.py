@@ -23,7 +23,11 @@ urlpatterns = [
         path('assignment/View/', views.show_assignment, name='show_assignment1'),
         path('assignment/exam/View/<int:id>/', views.show_exam_assignment, name='show_exam_assignment1'),
         path('question/<int:id>', views.delete_question, name='delete_questione1'),
-        path('exam/<int:id>', views.delete_assignment, name='delete_assignment1')],'streaming'), namespace='admin')),
+        path('exam/<int:id>', views.delete_assignment, name='delete_assignment1'),
+        path('upload/', views.UploadView.as_view(), name='upload'),
+        path('show/<id>', views.showvideo, name='show'),
+        path('lessons/', views.LessonList.as_view(), name='lesson_list')
+        ],'streaming'), namespace='admin')),
 
     path('students/', include(([
         
@@ -31,6 +35,9 @@ urlpatterns = [
         path('assignment/exam/View/<int:id>/', views.show_exam_assignment1, name='show_exam_assignment2'),
         path('assignment/exam/View/result/<int:id>', views.exam_process, name='exam_process1'),
         path('assignment/exam/View/marks/<int:id>', views.exam_result, name= 'result'),
+        path('show/<id>', views.showvideo1, name='show1'),
+        path('lessons/', views.LessonList1.as_view(), name='lesson_list1')
+
 
     ], 'streaming'), namespace= 'student')),  
 ]
